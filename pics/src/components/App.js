@@ -6,7 +6,9 @@ import ImageList from './ImageList';
 // Functional Component
 const App = () => {
     return(
-        <div>App</div>
+        <div className="ui container" style={{ marginTop: '15px' }}>
+            <SearchBar />
+        </div>
     );//return
 };//App
 
