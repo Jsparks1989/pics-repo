@@ -22,35 +22,29 @@ class SearchBar extends React.Component {
 
     // State
     state = {term: ''};
-
-
-    onFormSubmit = (event) => {
-        event.preventDefault();
-        console.log(this.state.term);
-    }
     
 
-    // onFormSubmit(event){
-    //     event.preventDefault();
+    onFormSubmit(event){
+        event.preventDefault();
 
-    //     /*
-    //      * Getting error 'Cannot read property 'state' of undefined. 
-    //      * Reason: When we call 'this.onFormSubmit' from onSubmit in form,
-    //      * there is nothing in front of onFormSubmit(){}, so it is undefined.
-    //      * When onFormSubmit is invoked, there is no 'this', instead its invoked
-    //      * only as onFormSubmit(){} so the 'this' inside of onFormSubmit(){} is 
-    //      * replaced with 'undefined'.
-    //      * 
-    //      */
-    //     console.log(this.state.term);
-    // }
+        /*
+         * Getting error 'Cannot read property 'state' of undefined. 
+         * Reason: When we call 'this.onFormSubmit' from onSubmit in form,
+         * there is nothing in front of onFormSubmit(){}, so it is undefined.
+         * When onFormSubmit is invoked, there is no 'this', instead its invoked
+         * only as onFormSubmit(){} so the 'this' inside of onFormSubmit(){} is 
+         * replaced with 'undefined'.
+         * 
+         */
+        console.log(this.state.term);
+    }
 
 
 
     render(){
         return(
             <div className="ui segment">
-                <form className="ui form" onSubmit={this.onFormSubmit}>
+                <form className="ui form" onSubmit={(event) => this.onFormSubmit(event)}>
                     <div className="field">
                         <label>Search Images</label>
                         <input type="text" 
