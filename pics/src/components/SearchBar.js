@@ -9,8 +9,11 @@ import React from 'react';
  * capture the input and set it to state.inputSearch.
  * 
  * 
- * 
- * 
+ * Refactored the code to go from 'uncontrolled' to 'controlled'.
+ * As the user types in <input>, the callback for onChange is invoked.
+ * The callback uses setState to set state.inputSearch to the value entered by the user.
+ * The Component rerenders.
+ * The <input> 'value' is set the state.inputSearch.
  * 
  */
 
@@ -20,27 +23,17 @@ class SearchBar extends React.Component {
     // State
     state = {inputSearch: ''};
 
-    // Callback function - onChange
-    onInputChange(event){
-        console.log(event.target.value);
-        // Will set the <input> text to state.inputSearch
-    }
-
     render(){
         return(
             <div className="ui segment">
                 <form className="ui form">
                     <div className="field">
                         <label>Search Images</label>
-                        {/* Do not add () onto this.onInputChange. If () is added,
-                            onInputChange will be automatically called everytime the component is rendered.
-                            We dont want it called everytime the page is rendered, only at certain times.
-                            By leaving () off, we are passing a reference to onInputChange to <input>. so 
-                            that <input> can call the function at sometime in the future. 
-                            NEVER ADD () TO A CALLBACK FUNCTION IN AN EVENT HANDLER
-                            =======================================================  
-                        */}
-                        <input type="text" onChange={this.onInputChange}></input>
+                        <input type="text" 
+                            value={ this.state.inputSearch } 
+                            onChange={(event) => this.setState({ inputSearch: event.target.value })}>
+                        </input>
+                        <button type="submit">Submit</button>
                     </div>
                 </form>
             </div>
