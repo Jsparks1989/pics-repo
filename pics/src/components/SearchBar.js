@@ -23,10 +23,20 @@ class SearchBar extends React.Component {
     // State
     state = {inputSearch: ''};
 
+
+    onFormSubmit(event){
+        // Stops browser from submitting the form automatically.
+        // Stops page from refreshing.
+        // Never want the browser to automatically submit the form itself.
+        event.preventDefault();
+    }
+
+
+
     render(){
         return(
             <div className="ui segment">
-                <form className="ui form">
+                <form className="ui form" onSubmit={this.onFormSubmit}>
                     <div className="field">
                         <label>Search Images</label>
                         <input type="text" 
