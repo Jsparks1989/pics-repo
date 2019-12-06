@@ -20,9 +20,18 @@ import React from 'react';
 
 class SearchBar extends React.Component {
 
+
+    constructor(props){
+        super(props);
+
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+    }
+
     // State
     state = {term: ''};
 
+
+    
 
     onFormSubmit(event){
         event.preventDefault();
@@ -48,8 +57,8 @@ class SearchBar extends React.Component {
                     <div className="field">
                         <label>Search Images</label>
                         <input type="text" 
-                            value={ this.state.inputSearch } 
-                            onChange={(event) => this.setState({ inputSearch: event.target.value })}>
+                            value={ this.state.term } 
+                            onChange={(event) => this.setState({ term: event.target.value })}>
                         </input>
                         <button type="submit">Submit</button>
                     </div>
