@@ -5,15 +5,17 @@ import ImageList from './ImageList';
 
 
 
-// Functional Component
-const App = () => {
-    return(
-        <div className="ui container" style={{ marginTop: '15px' }}>
+
+// Class component
+class App extends React.Component {
+    render(){
+        return(
+            <div className="ui container" style={{ marginTop: '15px' }}>
             <SearchBar />
         </div>
-    );//return
-};//App
-
+        );
+    }
+}
 
 
 
