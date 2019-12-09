@@ -8,6 +8,10 @@ import React from 'react';
  * itself, and we look at the props object and we call the function that was passed 
  * in props as onSubmit. We invoke the function with this.state.term.
  * 
+ * The point of this is so we can get data from child comp (SearchBar) back to parent
+ * comp (App). Whatever user searches for in SearchBar is not just available in SearchBar,
+ * it is available in App as well. 
+ * 
  */
 
 
