@@ -2,18 +2,11 @@ import React from 'react';
 
 
 /*
- * Creating functionality that will detect everytime a user enters
- * text in the search-bar.
  * 
- * When the user enters text in <input>, onInputChange(cb function) will 
- * capture the input and set it to state.inputSearch.
- * 
- * 
- * Refactored the code to go from 'uncontrolled' to 'controlled'.
- * As the user types in <input>, the callback for onChange is invoked.
- * The callback uses setState to set state.inputSearch to the value entered by the user.
- * The Component rerenders.
- * The <input> 'value' is set the state.inputSearch.
+ * When a user submits the form, onFormSubmit will run. onFormSubmit takes the event
+ * as a param and prevents the default behavior that would cause the page to refesh 
+ * itself, and we look at the props object and we call the function that was passed 
+ * in props as onSubmit. We invoke the function with this.state.term.
  * 
  */
 
@@ -26,7 +19,9 @@ class SearchBar extends React.Component {
     // Going with second solution.
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state.term);
+        // When form is submitted, onFormSubmit will run the callback props.onSubmit
+        // that was passed to SearchBar from App component.
+        this.props.onSubmit(this.state.term);
     }
 
     render(){
