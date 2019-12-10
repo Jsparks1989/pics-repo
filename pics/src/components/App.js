@@ -5,11 +5,20 @@ import SearchBar from './SearchBar';
 // Class component
 class App extends React.Component {
 
+    // Setting the state after the async API request.
+    state = { images: [], imagesTotal: {} };
+
+    /*
+     * response: 
+     * - config obj
+     * - data obj
+     *   - results []
+     *   - total int
+     *   - total_pages int
+     */
+
+
     onSearchSubmit  = async (term) => {
-        // Want to make API request to unsplash when this function is invoked. 
-        // Must use GET request with an endpoint of /search/photos.
-        // Takes 2 params. First: the address to make GET request to. 
-        // Two: object that can customize request.
         const response = await axios.get('https://api.unsplash.com/search/photos', {
             params: { query: term },
             headers: {
@@ -17,13 +26,42 @@ class App extends React.Component {
             }
         });
 
-        console.log(response.data.results);
+        this.setState({ images: response.data.results, imagesTotal: response.data.total });
+
+        console.log('state imagesData: ');
+        console.log(response);
     }
+
+
+    displaySearch = () => {
+        if(this.state.images.length === 0){
+            return(
+                <div className="ui message">
+                    <div className="header">
+                        Your Search
+                    </div>
+                    <p>There is are no results for your search... try another search.</p>
+                </div>
+            );
+        } else {
+            return(
+                <div className="ui message">
+                    <div className="header">
+                        Your Search
+                    </div>
+                    <p>we found {this.state.imagesTotal} images from your search!</p>
+                </div>
+            );
+        }
+    }
+
+
 
     render(){
         return(
             <div className="ui container" style={{ marginTop: '15px' }}>
             <SearchBar onSubmit={this.onSearchSubmit}/>
+            {this.displaySearch()}
         </div>
         );
     }
