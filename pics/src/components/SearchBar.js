@@ -13,6 +13,12 @@ class SearchBar extends React.Component {
         this.props.onSubmit(this.state.term);
     }
 
+
+    resetSearch = (event) => {
+        this.setState({ term: '' });
+    }
+
+
     render(){
         return(
             <div className="ui segment">
@@ -24,6 +30,12 @@ class SearchBar extends React.Component {
                             onChange={(event) => this.setState({term: event.target.value})}>
                         </input>
                         <button type="submit">Submit</button>
+
+                        {/* Do not have {this.resetSearch()}, this will cause the function
+                            to be ran automatically when the component renders.
+                            Instead, have {this.resetSearch}, this will pass a reference to 
+                            the function, not call the function. */}
+                        <button onClick={this.resetSearch}>Reset</button>
                     </div>
                 </form>
             </div>
