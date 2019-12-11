@@ -29,13 +29,8 @@ class SearchBar extends React.Component {
                             value={ this.state.term } 
                             onChange={(event) => this.setState({term: event.target.value})}>
                         </input>
-                        <button type="submit">Submit</button>
-
-                        {/* Do not have {this.resetSearch()}, this will cause the function
-                            to be ran automatically when the component renders.
-                            Instead, have {this.resetSearch}, this will pass a reference to 
-                            the function, not call the function. */}
-                        <button onClick={this.resetSearch}>Reset</button>
+                        <button className="ui primary basic button" type="submit">Submit</button>
+                        <button className="ui secondary basic button" onClick={this.resetSearch}>Reset</button>
                     </div>
                 </form>
             </div>
