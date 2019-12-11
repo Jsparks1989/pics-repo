@@ -1,12 +1,13 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import unsplash from '../api/unsplash';
+import ImageList from './ImageList';
 
 // Class component
 class App extends React.Component {
 
     // Setting the state after the async API request.
-    state = { images: [], imagesTotal: {} };
+    state = { images: [] };
 
     /*
      * response: 
@@ -23,10 +24,7 @@ class App extends React.Component {
             params: { query: term }
         });
     
-        this.setState({ images: response.data.results, imagesTotal: response.data.total });
-    
-        console.log('state imagesData: ');
-        console.log(response);
+        this.setState({ images: response.data.results });
     } 
 
 
@@ -46,7 +44,7 @@ class App extends React.Component {
                     <div className="header">
                         Your Search
                     </div>
-                    <p>we found {this.state.imagesTotal} images from your search!</p>
+                    <p>we found {this.state.images.length} images from your search!</p>
                 </div>
             );
         }
@@ -59,6 +57,7 @@ class App extends React.Component {
             <div className="ui container" style={{ marginTop: '15px' }}>
             <SearchBar onSubmit={this.onSearchSubmit}/>
             {this.displaySearch()}
+            <ImageList images={this.state.images} />
         </div>
         );
     }
