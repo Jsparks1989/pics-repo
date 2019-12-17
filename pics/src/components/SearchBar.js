@@ -18,6 +18,11 @@ class SearchBar extends React.Component {
         this.setState({ term: '' });
     }
 
+    /*
+     * How is 'this' determined inside an event handler?  
+     * The answer is 'this' inside of an event handler always refers to the element it
+     * was triggered on.
+     */
 
     render(){
         return(
