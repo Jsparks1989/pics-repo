@@ -2,12 +2,9 @@ import React from 'react';
 
 class ImageCard extends React.Component {
     render() {
-        // Destructuring image object. Adding 'description' and 'urls'
-        // to the end of 'this.props.image'.
+        // Destructuring image object.
         const {description, urls} = this.props.image;
 
-        // console.log('ImageCard props: ');
-        // console.log(this.props.image);
         return(
             <div>
                 <img 
