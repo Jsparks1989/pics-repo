@@ -12,16 +12,20 @@ class ImageCard extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.imageRef.current);
 
-        /*
-         * Console.logging 0 for clientHeight because we are console logging  
-         * the height before the image has even had a change to load. So the image 
-         * tag has a height of 0 pixels. Getting the height of image from the componentDidMount()
-         * is way too early. Must get image height from somewhere else.
-         */
+        // Listening for the event 'load'. When images have successfully loads up
+        // or downloads from the internet and is displayed obn screen, it emits the 'load'
+        // event. Once load event has been emitted, the images have been successfully loaded 
+        // and we can get the actual height of the image. Calling callback function setSpans().
+        this.imageRef.current.addEventListener('load', this.setSpans);
+    }
+
+
+    setSpans = () => {
         console.log(this.imageRef.current.clientHeight);
     }
+
+
 
     render() {
         // Destructuring image object.
