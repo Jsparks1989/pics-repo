@@ -52,8 +52,8 @@ class App extends React.Component {
 
     render(){
 
-        console.log('App state: ');
-        console.log(this.state.images);
+        // console.log('App state: ');
+        // console.log(this.state.images);
 
         return(
             <div className="ui container" style={{ marginTop: '15px' }}>

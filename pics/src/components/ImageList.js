@@ -4,8 +4,8 @@ import ImageCard from './ImageCard';
 
 const ImageList = (props) => {
 
-    console.log('ImageList props: ');
-    console.log(props.images);
+    // console.log('ImageList props: ');
+    // console.log(props.images);
 
     // BEST PRACTICE FOR MAPPING OVER LISTS
     // ====================================
