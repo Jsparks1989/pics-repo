@@ -21,7 +21,7 @@ class ImageCard extends React.Component {
         const height = this.imageRef.current.clientHeight;
 
         // Calculate how many spans to set to grid-row-end in CSS.
-        const spans = Math.ceil(height / 150);
+        const spans = Math.ceil(height / 10);
 
         this.setState({ spans });
     }
